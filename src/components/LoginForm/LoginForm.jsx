@@ -3,6 +3,7 @@ import css from './LoginForm.module.css';
 import { Icon } from '../img/Icon';
 // import { toast } from 'react-toastify';
 import { IMaskInput } from 'react-imask';
+import { GoogleLogin } from '@react-oauth/google';
 
 export function LoginForm({ login }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -65,6 +66,16 @@ export function LoginForm({ login }) {
           </button>
         </div>
         <ion-icon name="search"></ion-icon>
+        <div className={css.btnGoogle}>
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+        </div>
       </form>
     </div>
   );
