@@ -23,21 +23,27 @@ export const store = configureStore({
   [contactApi.reducerPath]: contactApi.reducer,
 },
   middleware: (getDefaultMiddleware) =>
-    [
-    ...getDefaultMiddleware(),
-    contactApi.middleware,
-        //   serializableCheck: {
-    //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    //   },
-  ]
+          getDefaultMiddleware({
+       serializableCheck: {
+         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+       },
+       }).concat(contactApi.middleware)
+    // [
+    // ...getDefaultMiddleware(),
+      // contactApi.middleware,
+     
+      //     serializableCheck: {
+      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      // },
+      // getDefaultMiddleware({
+      //  serializableCheck: {
+      //    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      //  },
+      //  }),
+  // ]
 
-    //  getDefaultMiddleware({
-    //   contactApi,
-    //   serializableCheck: {
-    //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    //   },
-    //   }),
 });
+
 export const persistor = persistStore(store);
 
 
