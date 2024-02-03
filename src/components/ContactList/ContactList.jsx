@@ -20,7 +20,7 @@ export const ContactList = () => {
   // const contacts2 = useSelector(selectStateContacts);
 
   // console.log('contacts111 :>> ', contacts2);
-  const { data, isFetching } = useFetchContactsQuery();
+  const { data } = useFetchContactsQuery();
   console.log('useFetchContactsQuery :>> ', data);
 
   useEffect(() => {
