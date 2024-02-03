@@ -4,7 +4,7 @@ import { contactsReduser } from './contacts/contactsSlice';
 import { filterReduser } from './contacts/sliceFilter';
 import { authReduser } from './auth/authSlice';
 import {persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,} from 'redux-persist'
-
+import {contactApi} from '../services/rtk'
 
 const persistConfig = {
   key: 'auth',
@@ -20,13 +20,23 @@ export const store = configureStore({
   contacts:contactsReduser,
   filter: filterReduser,
   auth: persistedReduser,
+  [contactApi.reducerPath]: contactApi.reducer,
 },
-   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-      }),
+  middleware: (getDefaultMiddleware) =>
+    [
+    ...getDefaultMiddleware(),
+    contactApi.middleware,
+        //   serializableCheck: {
+    //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    //   },
+  ]
+
+    //  getDefaultMiddleware({
+    //   contactApi,
+    //   serializableCheck: {
+    //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    //   },
+    //   }),
 });
 export const persistor = persistStore(store);
 

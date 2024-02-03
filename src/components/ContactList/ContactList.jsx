@@ -8,6 +8,7 @@ import {
   selectLoading,
   selectVisibleContacts,
 } from 'store/contacts/selectorsContacts';
+import { useFetchContactsQuery } from '../../services/rtk';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -15,9 +16,12 @@ export const ContactList = () => {
   const error = useSelector(selectError);
 
   const contacts = useSelector(selectVisibleContacts);
+
   // const contacts2 = useSelector(selectStateContacts);
 
   // console.log('contacts111 :>> ', contacts2);
+  const { data, isFetching } = useFetchContactsQuery();
+  console.log('useFetchContactsQuery :>> ', data);
 
   useEffect(() => {
     dispatch(getContactThunk());
