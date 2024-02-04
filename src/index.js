@@ -9,18 +9,18 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
+        <GoogleOAuthProvider clientId="54841711292-qbeh5qfir580b06prfprepojjgtr7icj.apps.googleusercontent.com">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         
       <BrowserRouter basename="/goit-react-phonebook">
-        <GoogleOAuthProvider clientId="54841711292-qbeh5qfir580b06prfprepojjgtr7icj">
       {/* <ThemeProvider theme={theme}> */}
       <App />
         {/* </ThemeProvider> */}
-        </GoogleOAuthProvider>
      </BrowserRouter>
         </PersistGate>
     </Provider>
-  // </React.StrictMode>
+        </GoogleOAuthProvider>
+  </React.StrictMode>
 );
