@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         
       <BrowserRouter basename="/goit-react-phonebook">
-        <GoogleOAuthProvider clientId="1065782230402-etabun5jeat15issen1ea0r75881kj2s.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="1065782230402-etabun5jeat15issen1ea0r75881kj2s.com">
       {/* <ThemeProvider theme={theme}> */}
       <App />
         {/* </ThemeProvider> */}
