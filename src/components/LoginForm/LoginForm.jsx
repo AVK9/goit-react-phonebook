@@ -69,9 +69,8 @@ export function LoginForm({ login }) {
           </button>
         </div>
         <ion-icon name="search"></ion-icon>
-
         <div className={css.btnGoogle} onClick={() => glogin()}>
-          Sign Google 🚀
+          Sign in with Google 🚀
         </div>
       </form>
     </div>
